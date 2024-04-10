@@ -24,7 +24,7 @@ export class Gestion {
             agendaDiv.appendChild(ul);
         } else {
             let emptyDiv = document.createElement("div");
-            emptyDiv.textContent = "La agenda está vacía.";
+            emptyDiv.textContent = "La agenda está vacía."; 
             agendaDiv.appendChild(emptyDiv);
         }
     }
@@ -45,4 +45,24 @@ export class Gestion {
             contactoObtenidoDiv.textContent = "La agenda está vacía.";
         }
     }
+    searchContactByNameAndDisplay(name, foundContactDiv) {
+        let current = this.agenda.front;
+        while (current) {
+            if (current.data.name === name) {
+                this.displayFoundContact(current.data, foundContactDiv);
+                return; }
+            current = current.next;
+        }
+    
+        this.displayFoundContact(null, foundContactDiv);
+    }
+
+    displayFoundContact(contact, foundContactDiv) {
+        if (contact) {
+            foundContactDiv.innerHTML = `Contacto encontrado: Nombre: ${contact.name}, Teléfono: ${contact.phone}`;
+        } else {
+            foundContactDiv.innerHTML = "Contacto no encontrado.";
+        }
+    }
+    
 }
