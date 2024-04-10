@@ -1,5 +1,4 @@
 import { Gestion } from "../models/Gestion.js";
-
 let gestion = new Gestion();
 
 let addContactBtn = document.getElementById("addContactBtn");
